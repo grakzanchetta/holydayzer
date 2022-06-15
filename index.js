@@ -1,6 +1,7 @@
 import express from 'express';
 
 const app = express();
+const hoje = new Date();
 const holidays = [
     { date: "1/1/2022", name: "Confraternização mundial" },
     { date: "1/3/2022", name: "Carnaval" },
@@ -20,9 +21,6 @@ app.get('/holidays', (req, res) => {
 });
 
 app.get('/is-today-holiday', (req, res) => {
-    // const hoje = "12/24/2022"; // pode tirar a linha de baixo e editar aqui pra testar
-    const hoje = new Date();
-
     for (let i = 0; i < holidays.length; i++){
         if (holidays[i].date.includes(hoje)){
             res.send(`Sim, hoje é ${holidays[i].name}`);
